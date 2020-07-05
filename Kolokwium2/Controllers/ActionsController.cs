@@ -26,8 +26,8 @@ namespace Kolokwium2.Controllers
         public async Task<IActionResult> GetActionsWithFirefighter([FromQuery(Name = "idFirefighter")] int IdFirefighter)
         {
       
-            var actions = await _remizaContext.Actions
-                .AsNoTracking()
+            var actions = await _remizaContext.FirefighterActions
+                .AsNoTracking().Where(e => e.Firefigther.IdFirefighter.Equals(IdFirefighter).
                 .Select(actions => new
                 {
                     actions.IdAction,
